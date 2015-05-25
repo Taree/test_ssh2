@@ -5,7 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.tgb.entity.User;
-
+/**
+ * 
+ * @author BFD_300
+ *对象类
+ */
 public interface UserDao {
 
 	public User getUser(String id);
