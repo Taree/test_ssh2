@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,12 +18,12 @@ import com.tgb.manager.UserManager;
 @RequestMapping("/user")
 public class UserController {
 
-	@Resource(name="userManager")
+	@Autowired
 	private UserManager userManager;
-
+    
 	@RequestMapping("/getAllUser")
 	public String getAllUser(HttpServletRequest request){
-		
+		System.out.println(userManager);
 		request.setAttribute("userList", userManager.getAllUser());
 		
 		return "/index";
@@ -30,7 +31,7 @@ public class UserController {
 	
 	@RequestMapping("/getUser")
 	public String getUser(String id,HttpServletRequest request){
-		
+		System.out.println(userManager);
 		request.setAttribute("user", userManager.getUser(id));
 	
 		return "/editUser";
@@ -51,7 +52,7 @@ public class UserController {
 	
 	@RequestMapping("/delUser")
 	public void delUser(String id,HttpServletResponse response){
-		
+		System.out.println(userManager);
 		String result = "{\"result\":\"error\"}";
 		
 		if(userManager.delUser(id)){
@@ -70,7 +71,7 @@ public class UserController {
 	
 	@RequestMapping("/updateUser")
 	public String updateUser(User user,HttpServletRequest request){
-		
+		System.out.println(userManager);
 		if(userManager.updateUser(user)){
 			user = userManager.getUser(user.getId());
 			request.setAttribute("user", user);

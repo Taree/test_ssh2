@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tgb.dao.UserDao;
 import com.tgb.entity.User;
-
 @Component
+@Transactional
 public class UserManagerImpl implements UserManager {
     @Autowired
 	private UserDao userDao;
@@ -24,6 +25,7 @@ public class UserManagerImpl implements UserManager {
 
 	@Override
 	public List<User> getAllUser() {
+		System.out.println("--->"+userDao);
 		return userDao.getAllUser();
 	}
 

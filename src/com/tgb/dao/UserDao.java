@@ -2,6 +2,8 @@ package com.tgb.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.tgb.entity.User;
 
 public interface UserDao {
